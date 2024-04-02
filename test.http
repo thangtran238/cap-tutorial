@@ -11,7 +11,7 @@ GET http://localhost:4004/odata/v4/catalog/Books?
 #
 # Get Author wit ID 101
 #
-GET http://localhost:4004/odata/v4/catalog/Authors(101)
+GET http://localhost:4004/odata/v4/catalog/Authors
 
 ###
 #
@@ -20,7 +20,7 @@ GET http://localhost:4004/odata/v4/catalog/Authors(101)
 POST http://localhost:4004/odata/v4/catalog/Authors
 Content-Type: application/json
 
-{"ID": 101, "name": "Some Author"}
+{"ID": 123, "name": "Some Author"}
 
 
 
@@ -40,4 +40,27 @@ Content-Type: application/json;IEEE754Compatible=true
 POST http://localhost:4004/odata/v4/catalog/Books
 Content-Type: application/json
 
-{"ID": 201, "title": "Some Title"}
+{"ID": 249, "title": "Thần Sấm", "author": {"ID": 150}, "stock": 111}
+
+###
+#
+# alter a book
+#
+PATCH  http://localhost:4004/odata/v4/catalog/Books(249)
+Content-Type: application/json
+
+{ "title": "Move" }
+
+###
+#
+# delete a book
+#
+DELETE http://localhost:4004/odata/v4/catalog/Books(249)
+###
+#
+# test on
+#
+POST http://localhost:4004/odata/v4/catalog/hello(to='world')
+Content-Type: application/json
+
+{ "title": "Move" }
